@@ -2,7 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
-
 // Loading all envs from .env into node's process.env
 dotenv.config();
 
