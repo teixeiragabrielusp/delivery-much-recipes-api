@@ -4,6 +4,9 @@ module.exports = {
     node: true,
     jest: true
   },
+  sourceType: {
+    module
+  },
   extends: [
     'eslint:recommended',
     'prettier',
