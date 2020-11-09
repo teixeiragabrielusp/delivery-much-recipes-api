@@ -1,30 +1,33 @@
 import recipesService from '../services/recipesService.js';
 import giphyService from '../services/giphyService.js';
+import titleFixer from '../helpers/titleHelper.js';
+import { EErrors } from '../constants/errors.js';
 
 const recipesController = async (req, res) => {
-  
-  if (!req.query.i) 
+  try {
+    if (!req.query.i) 
     throw new Error (EErrors.InvalidParams);
 
-  const query = req.query.i;
-  const queryArr = query.split(',').sort();
+    const query = req.query.i;
+    const queryArr = query.split(',').sort();
 
-  if(queryArr.length > 3)
-    throw new Error (EErrors.InvalidParams + ' - you must insert 3 or less ingredients!');
+    if(queryArr.length > 3)
+      throw new Error (EErrors.InvalidParams + ' - you must insert 3 or less ingredients!');
 
-  const responseData = {
-    keywords: [...queryArr],
-    recipes: []
-  }
+    const responseData = {
+      keywords: [...queryArr],
+      recipes: []
+    }
 
-  try {
     const recipes = await recipesService(query);
 
     const recipesResponse = recipes.data.results.map(recipe => {
       const { title, ingredients, href } = recipe;
 
+      const fixedTitle = titleFixer(title);
+
       return {
-        title,
+        title: fixedTitle,
         ingredients,
         link: href
       }
@@ -53,14 +56,18 @@ const recipesController = async (req, res) => {
       }
     });
 
-    Promise.all(recipeGiphyResponse).then(() => {
-      res.send(responseData);
+    Promise.all(recipeGiphyResponse)
+    .then(() => {
+      res.send(responseData)
+      .catch((err) => {
+        return err;
+      });
     });
   } 
   catch (err) {
     return res.status(400).send({
-      code: err.response.status,
-      message: err.message
+      code: err.response ? err.response.status : 400,
+      message: err.message ? err.message : EErrors.UnknownError
     });
   }
 }

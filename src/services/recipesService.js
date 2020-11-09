@@ -7,13 +7,14 @@ dotenv.config();
 const recipesUrl = process.env.URLRECIPE;
 
 const recipesService = async (query) => {
-  const recipesResponse = await axios.get(`${recipesUrl}?i=${query}`);
-
-  //add others possible specific errors - check responses
-  if(recipesResponse.status !== 200) 
-    throw new Error (EErrors.BadRequest);
-
-  return recipesResponse;
+  try {
+    const recipesResponse = await axios.get(`${recipesUrl}?i=${query}`);
+  
+    return recipesResponse;
+  } 
+  catch (err) {
+    throw new Error (EErrors.BadRequest + ' - ' + err.message);
+  }
 }
 
 export default recipesService;

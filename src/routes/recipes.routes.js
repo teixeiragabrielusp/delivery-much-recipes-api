@@ -1,5 +1,6 @@
 import express from 'express';
 import recipesController from '../controllers/recipesController.js';
+import { EErrors } from '../constants/errors.js';
 
 const app = express();
 const recipesRouter = express.Router();
@@ -14,9 +15,9 @@ recipesRouter.get('/', async (req, res, next) => {
     if(err instanceof Error) return next(err);
 
     return next (
-      new Error('Unexpected error while fetching data from API!')
+      new Error(EErrors.InternalError + ' Unexpected error while fetching data from API!')
     );
   }
-})
+});
 
 export default recipesRouter;
