@@ -1,5 +1,5 @@
 import express from 'express';
-import recipesController from '../controllers/recipesController';
+import recipesController from '../controllers/recipesController.js';
 
 const app = express();
 const recipesRouter = express.Router();

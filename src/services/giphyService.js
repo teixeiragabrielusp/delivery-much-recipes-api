@@ -4,7 +4,7 @@ import { EErrors } from '../constants/errors.js';
 const giphyUrl = process.env.URL_GYPHY;
 const giphyToken = process.env.TOKEN_GYPHY;
 
-export const giphyService = async (title) => {
+const giphyService = async (title) => {
   const giphyResponse = await axios.get(`${giphyUrl}?api_key=${giphyToken}&q=${title}&limit=1`);
 
   //add others possible specific errors - check responses
@@ -13,3 +13,5 @@ export const giphyService = async (title) => {
   
   return giphyResponse;
 }
+
+export default giphyService;

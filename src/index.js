@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import recipesRouter from './routes/recipes.routes';
+import recipesRouter from './routes/recipes.routes.js';
 
 // Loading all envs from .env into node's process.env
 dotenv.config();

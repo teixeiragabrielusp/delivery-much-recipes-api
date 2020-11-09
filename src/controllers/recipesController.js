@@ -1,7 +1,7 @@
-import recipesService from '../services/recipesService';
-import giphyService from '../services/giphyService';
+import recipesService from '../services/recipesService.js';
+import giphyService from '../services/giphyService.js';
 
-export const recipesController = async (req, res) => {
+const recipesController = async (req, res) => {
   
   if (!req.query.i) 
     throw new Error (EErrors.InvalidParams);
@@ -44,7 +44,7 @@ export const recipesController = async (req, res) => {
           gif
         });
       }
-      
+
       catch (err) {
         res.status(400).send({
           code: err.statusCode,
@@ -64,3 +64,5 @@ export const recipesController = async (req, res) => {
     });
   }
 }
+
+export default recipesController;

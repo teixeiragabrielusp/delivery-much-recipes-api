@@ -3,7 +3,7 @@ import { EErrors } from '../constants/errors.js'
 
 const recipesUrl = process.env.URL_RECIPE;
 
-export const recipesService = async (query) => {
+const recipesService = async (query) => {
   const recipesResponse = await axios.get(`${recipesUrl}${query}`);
 
   //add others possible specific errors - check responses
@@ -12,3 +12,5 @@ export const recipesService = async (query) => {
 
   return recipesResponse;
 }
+
+export default recipesService;
