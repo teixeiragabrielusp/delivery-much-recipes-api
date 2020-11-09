@@ -31,11 +31,11 @@ const recipesController = async (req, res) => {
     });
 
     const recipeGiphyResponse = recipesResponse.map(async recipe => {
-      const { title, ingredients, href } = recipe;
+      const { title, ingredients, link } = recipe;
 
       try {
         const giphys = await giphyService(title);
-        const gif = gyphys.data.data[0].images.downsized_large.url;
+        const gif = giphys.data.data[0].images.downsized_large.url;
 
         responseData.recipes.push({
           title,
@@ -46,8 +46,8 @@ const recipesController = async (req, res) => {
       }
 
       catch (err) {
-        res.status(400).send({
-          code: err.statusCode,
+        return res.status(400).send({
+          code: err.response.status,
           message: err.message
         });
       }
@@ -58,8 +58,8 @@ const recipesController = async (req, res) => {
     });
   } 
   catch (err) {
-    res.status(400).send({
-      code: err.statusCode,
+    return res.status(400).send({
+      code: err.response.status,
       message: err.message
     });
   }
