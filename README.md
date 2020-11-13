@@ -6,10 +6,15 @@ Recipes API - built with NodeJs and Express.
 
 #### Index
 [Guidelines](#guidelines)
+
 [Requirements](#requirements)
+
 [SettingUp](#settingup)
+
 [Usage](#usage)
+
 [Tests](#tests)
+
 [Linter](#linter)
 
 ---
