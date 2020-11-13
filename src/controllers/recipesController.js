@@ -1,12 +1,11 @@
-import recipesService from '../services/recipesService.js';
-import giphyService from '../services/giphyService.js';
-import titleFixer from '../helpers/titleHelper.js';
+import { recipesService, giphyService } from '../services/index.js';
+import { titleFixer, ingredientsOrganizer, sortRecipes } from '../helpers/index.js';
 import { EErrors } from '../constants/errors.js';
 
 const recipesController = async (req, res) => {
   try {
     if (!req.query.i) 
-    throw new Error (EErrors.InvalidParams);
+      throw new Error (EErrors.InvalidParams);
 
     const query = req.query.i;
     const queryArr = query.split(',').sort();
@@ -14,21 +13,25 @@ const recipesController = async (req, res) => {
     if(queryArr.length > 3)
       throw new Error (EErrors.InvalidParams + ' - you must insert 3 or less ingredients!');
 
-    const responseData = {
+    let responseData = {
       keywords: [...queryArr],
       recipes: []
     }
 
     const recipes = await recipesService(query);
 
+    if(recipes.data.results.length === 0)
+      throw new Error (EErrors.BadResponse + ' - no recipes founded!');
+
     const recipesResponse = recipes.data.results.map(recipe => {
       const { title, ingredients, href } = recipe;
 
       const fixedTitle = titleFixer(title);
+      const ingredientsArr = ingredientsOrganizer(ingredients);
 
       return {
         title: fixedTitle,
-        ingredients,
+        ingredients: ingredientsArr,
         link: href
       }
     });
@@ -58,11 +61,11 @@ const recipesController = async (req, res) => {
 
     Promise.all(recipeGiphyResponse)
     .then(() => {
+      responseData.recipes = sortRecipes(responseData.recipes);
       res.send(responseData)
-      .catch((err) => {
-        return err;
-      });
-    });
+    }).catch((err) => {
+      return err;
+    });;
   } 
   catch (err) {
     return res.status(400).send({

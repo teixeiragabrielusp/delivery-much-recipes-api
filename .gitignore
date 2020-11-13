@@ -4,3 +4,4 @@ node_modules
 *-lock.json
 .vscode
 node_modules*
+dist
