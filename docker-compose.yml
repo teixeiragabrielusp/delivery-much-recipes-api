@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+    app:
+        container_name: recipes-api
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "${PORT}:${PORT}"
+        env_file:
+            - .env
+        volumes:
+          - .:/usr/src/  

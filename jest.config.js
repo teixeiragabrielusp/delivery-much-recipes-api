@@ -10,5 +10,5 @@ module.exports = {
     "**/__tests__/**/*.test.js",
   ],
   //Test timeout
-  testTimeout: 30000
+  testTimeout: 300000
 };

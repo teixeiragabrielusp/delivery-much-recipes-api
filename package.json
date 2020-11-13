@@ -1,7 +1,7 @@
 {
   "name": "desafio-deliverymuch",
   "version": "1.0.0",
-  "description": "",
+  "description": "RecipesAPI",
   "main": "index.js",
   "scripts": {
     "build": "babel src -d dist",
@@ -14,8 +14,8 @@
     "verbose": false
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Gabriel Teixeira",
+  "license": "MIT",
   "dependencies": {
     "babel-plugin-inline-dotenv": "^1.2.2",
     "axios": "^0.21.0",
