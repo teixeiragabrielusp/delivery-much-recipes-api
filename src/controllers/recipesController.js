@@ -18,7 +18,7 @@ const recipesController = async (req, res) => {
         EErrors.InvalidParams + ' - you must insert 3 or less ingredients!'
       );
 
-    let responseData = {
+    const responseData = {
       keywords: [...queryArr],
       recipes: [],
     };

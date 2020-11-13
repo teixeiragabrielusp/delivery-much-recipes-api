@@ -2,11 +2,10 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true
+    jest: true,
+    es6: true
   },
-  sourceType: {
-    module
-  },
+  parser: "babel-eslint",
   extends: [
     'eslint:recommended',
     'prettier',
