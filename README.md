@@ -5,12 +5,12 @@ Recipes API - built with NodeJs and Express.
 ---
 
 #### Index
-[Guidelines] (#guidelines)
-[Requirements] (#requirements)
-[Setting Up] (#settingup)
-[Usage] (#usage)
-[Tests] (#tests)
-[Linter] (#linter)
+[Guidelines](#guidelines)
+[Requirements](#requirements)
+[SettingUp](#settingup)
+[Usage](#usage)
+[Tests](#tests)
+[Linter](#linter)
 
 ---
 
@@ -93,6 +93,8 @@ $ npm run test
 ```
 
 ## <a name="linter"/> Linter
+
+### Docker
 
 To run linter and prettier with *docker* you will need to:
 
