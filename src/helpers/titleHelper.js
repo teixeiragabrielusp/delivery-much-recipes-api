@@ -3,6 +3,6 @@ const titleFixer = (title) => {
   title = title.replace(/[\t\r]/g, '');
 
   return title.trim();
-}
+};
 
 export default titleFixer;

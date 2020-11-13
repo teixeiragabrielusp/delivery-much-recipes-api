@@ -9,14 +9,14 @@ const giphyToken = process.env.TOKENGYPHY;
 
 const giphyService = async (title) => {
   try {
-    const giphyResponse = await axios.get(`${giphyUrl}?api_key=${giphyToken}&q=${title}&limit=1`);
-    
-    return giphyResponse;
-  }
-  catch (err) {
-    throw new Error (EErrors.BadRequest + ' - ' + err.message);
-  }
+    const giphyResponse = await axios.get(
+      `${giphyUrl}?api_key=${giphyToken}&q=${title}&limit=1`
+    );
 
-}
+    return giphyResponse;
+  } catch (err) {
+    throw new Error(EErrors.BadRequest + ' - ' + err.message);
+  }
+};
 
 export default giphyService;

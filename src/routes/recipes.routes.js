@@ -10,12 +10,14 @@ app.use(express.json());
 recipesRouter.get('/', async (req, res, next) => {
   try {
     recipesController(req, res);
-
   } catch (err) {
-    if(err instanceof Error) return next(err);
+    if (err instanceof Error) return next(err);
 
-    return next (
-      new Error(EErrors.InternalError + ' Unexpected error while fetching data from API!')
+    return next(
+      new Error(
+        EErrors.InternalError +
+          ' Unexpected error while fetching data from API!'
+      )
     );
   }
 });
