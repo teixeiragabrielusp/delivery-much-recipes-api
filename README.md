@@ -9,7 +9,7 @@ Recipes API - built with NodeJs and Express.
 
 [Requirements](#requirements)
 
-[SettingUp](#settingup)
+[Setting Up](#settingup)
 
 [Usage](#usage)
 
