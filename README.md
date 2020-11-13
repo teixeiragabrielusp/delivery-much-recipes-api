@@ -1,6 +1,6 @@
 # Delivery Much Backend Tech Challenge
 
-Recipes API - built with NodeJs and Express.
+Recipes API - built with NodeJs and Express by [Gabriel Teixeira](https://github.com/teixeiragabrielusp).
 
 ---
 
@@ -40,10 +40,10 @@ Challenge description: (https://github.com/delivery-much/challenge)
 
 * a) With HTTPS:
 
-> git clone 
+> git clone https://github.com/teixeiragabrielusp/delivery-much-recipes-api.git
 
 * b) With SSH: 
-> git clone 
+> git clone git@github.com:teixeiragabrielusp/delivery-much-recipes-api.git
 
 2. Create at the root of the project your .env file and fill out with the environments variables
 
@@ -59,7 +59,7 @@ To generate your giphy token you will need to follow to [Giphy](https://develope
 
 ## <a name="usage"/> Usage
 
-After setting up and configure the project you are able to run and use the api, to do that you can use docker or npm command lines.
+After setting up and configure the project you are able to run and use the **Recipes API**, to do that you can use *docker* or *npm* command lines.
 
 ### Docker
 
